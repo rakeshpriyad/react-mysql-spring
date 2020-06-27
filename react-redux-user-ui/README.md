@@ -1,6 +1,15 @@
 
 
+
+
+docker build -t rkp/react-redux-user-ui .
+
+docker run -it -p 80:3000 rkp/react-redux-user-ui
+
 ## Available Scripts
+open in browser
+http://172.17.0.2:3000/
+
 
 In the project directory, you can run:
 
