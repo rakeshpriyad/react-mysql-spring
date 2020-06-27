@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { reduxForm } from 'redux-form'
-import { addUser } from '../../actions/users'
+import ApiService from "../../service/ApiService";
+
 class AddUserComponent extends Component{
 
-    /*constructor(props){
+    constructor(props){
         super(props);
         this.state ={
             username: '',
@@ -29,59 +29,47 @@ class AddUserComponent extends Component{
 
     onChange = (e) =>
         this.setState({ [e.target.name]: e.target.value });
-*/
-    render() {
-      
-            const { fields: { username, password, firstName, lastName, age, salary }, handleSubmit } = this.props;
-            console.log(username);
 
+    render() {
         return(
             <div>
                 <h2 className="text-center">Add User</h2>
-                <form onSubmit={(user) => {
-                this.props.dispatch(addUser(user));
-                this.props.history.push('/');
-            }}>
+                <form>
                 <div className="form-group">
                     <label>User Name:</label>
-                    <input type="text" placeholder="username" name="username" className="form-control" {...username} />
+                    <input type="text" placeholder="username" name="username" className="form-control" value={this.state.username} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
                     <label>Password:</label>
-                    <input type="password" placeholder="password" name="password" className="form-control" {...password} />
+                    <input type="password" placeholder="password" name="password" className="form-control" value={this.state.password} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
                     <label>First Name:</label>
-                    <input placeholder="First Name" name="firstName" className="form-control" {...firstName} />
+                    <input placeholder="First Name" name="firstName" className="form-control" value={this.state.firstName} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
                     <label>Last Name:</label>
-                    <input placeholder="Last name" name="lastName" className="form-control" {...lastName} />
+                    <input placeholder="Last name" name="lastName" className="form-control" value={this.state.lastName} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
                     <label>Age:</label>
-                    <input type="number" placeholder="age" name="age" className="form-control" {...age} />
+                    <input type="number" placeholder="age" name="age" className="form-control" value={this.state.age} onChange={this.onChange}/>
                 </div>
 
                 <div className="form-group">
                     <label>Salary:</label>
-                    <input type="number" placeholder="salary" name="salary" className="form-control" {...salary} />
+                    <input type="number" placeholder="salary" name="salary" className="form-control" value={this.state.salary} onChange={this.onChange}/>
                 </div>
 
-                <button className="btn btn-success" type ="submit">Save</button>
+                <button className="btn btn-success" onClick={this.saveUser}>Save</button>
             </form>
     </div>
         );
     }
 }
 
-export default reduxForm({
-    form: 'AddUserForm',
-    fields: ['username', 'password', 'firstName', 'lastName', 'age', 'salary'] 
-  }, null, { addUser })(AddUserComponent);
-  
-//  
+export default AddUserComponent;

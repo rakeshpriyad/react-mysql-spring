@@ -27,3 +27,18 @@ select * from user;
 
 
 http://localhost:30000/
+
+
+
+docker build -f dockerfiles/Dockerfile.debug -t myapp_debug .
+docker build -f dockerfiles/Dockerfile.prod  -t myapp_prod .
+
+
+
+Use docker attach to attach your terminal’s standard input, output, and error (or any combination of the three) to a running container using the container’s ID or name. This allows you to view its ongoing output or to control it interactively, as though the commands were running directly in your terminal.
+
+docker run -d --name topdemo ubuntu /usr/bin/top -b
+
+$ docker attach topdemo
+
+
